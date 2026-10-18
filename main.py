@@ -2,6 +2,7 @@ import os
 import yaml
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from dotenv import dotenv_values
 
 app = FastAPI()
@@ -81,3 +82,8 @@ async def get_effective_config(request: Request):
         config["api_key"] = "****"
 
     return config
+
+
+@app.get("/submission.tar.gz")
+async def get_submission():
+    return FileResponse("submission.tar.gz")
