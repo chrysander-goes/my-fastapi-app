@@ -86,4 +86,8 @@ async def get_effective_config(request: Request):
 
 @app.get("/submission.tar.gz")
 async def get_submission():
-    return FileResponse("submission.tar.gz")
+    return FileResponse(
+        path="submission.tar.gz",
+        filename="submission.tar.gz",
+        media_type="application/octet-stream"
+    )
